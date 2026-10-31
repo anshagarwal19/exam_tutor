@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+.next-*/
+.vercel/
+out/
+build/
+
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Local Supabase state
+supabase/.temp/
+
+# Logs and test artifacts
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+coverage/
+.DS_Store
+
+# TypeScript build cache
+*.tsbuildinfo

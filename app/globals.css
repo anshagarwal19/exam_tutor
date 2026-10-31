@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Theme tokens ---------- */
+/* Values are "R G B" triplets so Tailwind can add opacity (bg-accent/10 etc.). */
+:root {
+  --paper: 251 248 241;
+  --surface: 255 255 255;
+  --ink: 27 36 48;
+  --graphite: 91 101 115;
+  --rule: 217 211 196;
+  --accent: 31 95 191;
+  --ember: 224 121 43;
+  --moss: 46 139 87;
+  --amber: 233 185 73;
+  --rust: 184 67 47;
+  --grid: 31 95 191;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: 14 18 25;
+  --surface: 23 29 39;
+  --ink: 232 230 223;
+  --graphite: 150 160 175;
+  --rule: 52 62 78;
+  --accent: 120 170 250;
+  --ember: 240 150 90;
+  --moss: 96 196 140;
+  --amber: 240 200 100;
+  --rust: 235 115 95;
+  --grid: 120 170 250;
+  color-scheme: dark;
+}
+
+.sepia {
+  --paper: 244 235 215;
+  --surface: 250 244 230;
+  --ink: 62 48 35;
+  --graphite: 112 91 69;
+  --rule: 211 192 160;
+  --accent: 133 83 39;
+  --ember: 174 99 49;
+  --moss: 79 113 69;
+  --amber: 184 135 54;
+  --rust: 153 67 48;
+  --grid: 133 83 39;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-height: 100vh;
+    background-color: rgb(var(--paper));
+    color: rgb(var(--ink));
+    background-image:
+      linear-gradient(rgb(var(--grid) / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--grid) / 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+}
+
+@layer components {
+  .notebook-card {
+    @apply rounded-xl border border-rule bg-surface/85 p-6 shadow-[4px_4px_0_0_rgba(0,0,0,0.06)];
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 disabled:opacity-50 disabled:hover:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink/20 px-5 py-3 font-medium transition hover:border-ink hover:bg-surface;
+  }
+  .input {
+    @apply w-full rounded-lg border border-rule bg-surface px-4 py-3 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20;
+  }
+  .annotation {
+    @apply font-hand text-xl text-accent;
+  }
+  .chip {
+    @apply rounded-full border border-rule px-3 py-1 text-sm;
+  }
+}
+
+/* Mastery ring: animates stroke-dashoffset from inline style. */
+.ring-track {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
